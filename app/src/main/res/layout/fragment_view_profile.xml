@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            android:background="@color/DimGray"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="405dp">
+                <LinearLayout
+                    android:background="@drawable/gradientbackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_marginTop="45dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/profile_icon"/>
+                    <TextView
+                        android:id="@+id/tvProfileName"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:textSize="21sp"/>
+                </LinearLayout>
+                <android.support.v7.widget.CardView
+                    android:layout_width="400dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="275dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ratings"
+                                android:textSize="20sp"
+                                />
+                            <TextView
+                                android:id="@+id/originalRatings"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:paddingTop="10dp"
+                                android:textColor="@color/Cyan"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Wallet"
+                                android:textSize="20sp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:paddingTop="10dp"
+                                android:textColor="@color/Cyan"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_email_black_24dp"/>
+                    <TextView
+                        android:id="@+id/tvProfileEmail"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:text=""/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_phone_android_black_24dp"/>
+                    <TextView
+                        android:id="@+id/tvProfilePhone"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:text=""/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_group_add_black_24dp"/>
+                    <TextView
+                        android:id="@+id/tvProfileAge"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:text=""/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="25dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_pin_drop_black_24dp"/>
+                    <TextView
+                        android:id="@+id/tvProfileAddr"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:text=""/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <android.support.design.widget.BottomNavigationView
+                android:layout_marginTop="15dp"
+                android:id="@+id/navigationnouse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                android:background="?android:attr/windowBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:menu="@menu/nouse" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
+
+
+
+
+

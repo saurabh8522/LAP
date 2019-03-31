@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.navigationactivity">
+
+    <application
+        android:name=".Fragment.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Fragment.MainActivity"></activity>
+        <activity android:name=".Fragment.Wallet_main" />
+        <activity android:name=".Fragment.ContactActivity" />
+        <activity android:name=".Fragment.RegistrationActivity"/>
+        <activity android:name=".Fragment.sendmoney"/>
+        <activity android:name=".Fragment.LoginActivity"/>
+        <activity android:name=".Fragment.wallet"/>
+        <activity android:name=".Fragment.Helpdesk"/>
+        <activity android:name=".Fragment.moneysent"/>
+        <activity android:name=".Fragment.PasswordActivity"/>
+        <activity android:name=".Fragment.Profile_display"/>
+        <activity android:name=".Fragment.selfadd"/>
+        <activity android:name=".Fragment.dialerpge"/>
+        <activity android:name=".Fragment.nearest"/>
+        <activity
+            android:name=".Fragment.Splash"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
