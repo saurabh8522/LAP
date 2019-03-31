@@ -8,20 +8,20 @@ public class UserProfile {
     public String userAddr;
     public String userGen;
     public String userAge;
-    public String rate_review;
-    public String ratings;
+//    public String rate_review;
+//    public String ratings;
     public UserProfile(){
     }
 
-    public UserProfile(String userPhone, String userEmail, String userName,String userAddr,String userGen,String userAge,String rate_review, String ratings) {
+    public UserProfile(String userPhone, String userEmail, String userName,String userAddr,String userGen,String userAge) {
         this.userPhone = userPhone;
         this.userEmail = userEmail;
         this.userName = userName;
         this.userAddr=userAddr;
         this.userGen=userGen;
         this.userAge=userAge;
-        this.rate_review=rate_review;
-        this.ratings = ratings;
+//        this.rate_review=rate_review;
+//        this.ratings = ratings;
     }
 
 
@@ -73,19 +73,19 @@ public class UserProfile {
         this.userAge = userAge;
     }
 
-    public String getRate_review() {
-        return rate_review;
-    }
-
-    public void setRate_review(String rate_review) {
-        this.rate_review = rate_review;
-    }
-
-    public String getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(String ratings) {
-        this.ratings = ratings;
-    }
+//    public String getRate_review() {
+//        return rate_review;
+//    }
+//
+//    public void setRate_review(String rate_review) {
+//        this.rate_review = rate_review;
+//    }
+//
+//    public String getRatings() {
+//        return ratings;
+//    }
+//
+//    public void setRatings(String ratings) {
+//        this.ratings = ratings;
+//    }
 }

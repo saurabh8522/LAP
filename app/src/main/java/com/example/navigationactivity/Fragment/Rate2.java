@@ -178,7 +178,7 @@ public class Rate2 extends AppCompatActivity {
 
 
                             rate = rate_review.getText().toString();
-                            UserProfile userProfile1 = new UserProfile(phone,email,name,addr,gen,age,rate,ratedValue);
+                            UserProfile userProfile1 = new UserProfile(phone,email,name,addr,gen,age);
 
 
                            // databaseReference.child(firebaseAuth.getUid()).setValue(userProfile1);

@@ -223,7 +223,7 @@ public class RegistrationActivity extends AppCompatActivity{
         gen = radioButton.getText().toString();
         phone = userPhone.getText().toString().trim();
         //rate="".trim();
-        UserProfile userProfile = new UserProfile(phone, email, name,addr,gen,age,"","0");
+        UserProfile userProfile = new UserProfile(phone, email, name,addr,gen,age);
         //Toast.makeText(getApplicationContext(),"age: "+age + "email: "+ email, Toast.LENGTH_LONG).show();
         //Log.d("Age:",age);
         //Log.d("Email:",email);

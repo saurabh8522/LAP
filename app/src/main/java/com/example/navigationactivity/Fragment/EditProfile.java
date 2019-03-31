@@ -72,8 +72,8 @@ public class EditProfile extends Fragment {
                     NewUserAddr.setText(userProfile.getUserAddr());
                     email = userProfile.getUserEmail();
                     gen = userProfile.getUserGen();
-                    rate= userProfile.getRate_review();
-                    ratedValue=userProfile.getRatings();
+//                    rate= userProfile.getRate_review();
+//                    ratedValue=userProfile.getRatings();
                     progressDialog.dismiss();
 
                     //newUserGen.setText(userProfile.getUserGen());
@@ -93,7 +93,7 @@ public class EditProfile extends Fragment {
                     age = newUserAge.getText().toString();
                     phone = newUserPhone.getText().toString();
                     addr = NewUserAddr.getText().toString();
-                    UserProfile userProfile = new UserProfile(phone, email, name, addr, gen, age,rate,"");
+                    UserProfile userProfile = new UserProfile(phone, email, name, addr, gen, age);
 
                     databaseReference.child(firebaseAuth.getUid()).setValue(userProfile);
                     startActivity(new Intent(getContext().getApplicationContext(), MainActivity.class));

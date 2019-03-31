@@ -76,7 +76,7 @@ public class ViewProfile extends Fragment {
                     profileEmail.setText(userProfile.getUserEmail());
                     profileAddr.setText(userProfile.getUserAddr());
                     profilePhone.setText(userProfile.getUserPhone());
-                    profileratings.setText(userProfile.getRatings());
+//                    profileratings.setText(userProfile.getRatings());
                     //profileUserName.setText(userProfile.getuName());
                     progressDialog.dismiss();
                 }

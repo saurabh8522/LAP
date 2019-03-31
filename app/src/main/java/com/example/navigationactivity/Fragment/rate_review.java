@@ -101,7 +101,7 @@ public class rate_review extends Fragment {
                             //ratedValue=userProfile.getRatings();
                             //ratings=userProfile.getRatings();
                             rate = rate_review.getText().toString();
-                            UserProfile userProfile1 = new UserProfile(phone,email,name,addr,gen,age,rate,ratedValue);
+                            UserProfile userProfile1 = new UserProfile(phone,email,name,addr,gen,age);
 
 
                             databaseReference.child(firebaseAuth.getUid()).setValue(userProfile1);
