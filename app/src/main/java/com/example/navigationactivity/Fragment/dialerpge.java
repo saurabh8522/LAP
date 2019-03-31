@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.navigationactivity.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -87,17 +88,18 @@ public class dialerpge extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(getApplicationContext(),"tel:"+list.get(position).getUserPhone(),Toast.LENGTH_SHORT).show();
-                
+                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+                Toast.makeText(dialerpge.this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
 
-                //   startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+list.get(position).getUserPhone())));
-                try {
-                    list.get(position).setRatings("50");
+                //Toast.makeText(dialerpge.this, UID, Toast.LENGTH_LONG);
+//                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+list.get(position).getUserPhone())));
+                //startActivity(new Intent(dialerpge.this, listToRate.class));
 
-                    Toast.makeText(getApplicationContext(),"tel:"+list.get(position).getRatings(),Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
+                Intent intent  = new Intent(dialerpge.this,listToRate.class);
+                intent.putExtra("KEY_USER_NAME", list.get(position).getUserName());
+                intent.putExtra("KEY_PHONE_NUMBER", list.get(position).getUserPhone());
+                startActivity(intent);
             }
         });
 
