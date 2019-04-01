@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.navigationactivity.Fragment.Dialer1.student_quiz_list;
 import com.example.navigationactivity.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -68,8 +70,10 @@ public class Dashboard extends Fragment {
     }
 
     public void openprofile(){
-        Intent i = new Intent(getActivity(), dialerpge.class);
+        Intent i = new Intent(getActivity(),student_quiz_list.class );
         startActivity(i);
+        //Fragment fragment = new student_quiz_list();
+        //loadwindow(fragment);
         ((Activity) getActivity()).overridePendingTransition(0,0);
     }
 
@@ -78,4 +82,11 @@ public class Dashboard extends Fragment {
         startActivity(i);
         ((Activity) getActivity()).overridePendingTransition(0,0);
     }
+//    private void loadwindow(Fragment fragment){
+//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+//        transaction.replace(R.id.frameLayout,fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//
+//    }
 }

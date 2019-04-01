@@ -18,6 +18,7 @@ public class listToRate extends AppCompatActivity {
     User user;
     Button rate, pay, call;
     String name, phoneNumber,userNamesent;
+    String username, userRating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +32,13 @@ public class listToRate extends AppCompatActivity {
         ref = database.getReference("profiles/");
 
 
-
         /* Get values from Intent */
-        Intent intent = getIntent();
-        phoneNumber  = intent.getStringExtra("KEY_PHONE_NUMBER");
-        userNamesent = intent.getStringExtra("KEY_USER_NAME");
+        //Intent intent = getIntent();
+       // phoneNumber  = intent.getStringExtra("KEY_PHONE_NUMBER");
+       // userNamesent = intent.getStringExtra("KEY_USER_NAME");
+        Intent intent1 = getIntent();
+        username = intent1.getStringExtra("username");
+        userRating = intent1.getStringExtra("rating");
 
 
 
@@ -52,13 +55,15 @@ public class listToRate extends AppCompatActivity {
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(getApplicationContext(),userRating +"is rating",Toast.LENGTH_LONG).show();
                 Intent intent  = new Intent(listToRate.this, Rate2.class);
-                intent.putExtra("KEY_USER_NAME", userNamesent);
+                intent.putExtra("username11",username);
+                intent.putExtra("rating11",userRating);
+
                 //intent.putExtra("KEY_PHONE_NUMBER", list.get(position).getUserPhone());
                 startActivity(intent);
 
-                startActivity(new Intent(listToRate.this, Rate2.class));
+                //startActivity(new Intent(listToRate.this, Rate2.class));
                // Toast.makeText(listToRate.this,"RATED", Toast.LENGTH_SHORT).show();
             }
         });

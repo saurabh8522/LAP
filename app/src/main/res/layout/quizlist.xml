@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+
     android:orientation="horizontal"
     android:padding="@dimen/activity_horizontal_margin"
 
@@ -10,26 +11,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintCircleRadius="4dp"
     android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/user_name"
+            android:text=""
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_width="fill_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/user_ratings"/>
+    </LinearLayout>
 
-
-
-    <com.android.volley.toolbox.NetworkImageView
-        android:id="@+id/quiz_image"
-        android:layout_width="@dimen/feed_item_profile_pic"
-        android:layout_height="@dimen/feed_item_profile_pic"
-        android:scaleType="fitCenter" >
-    </com.android.volley.toolbox.NetworkImageView>
-    <TextView
-        android:id="@+id/quiz_name"
-        android:text="@string/title_activity_quiz"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_width="fill_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        />
 
 
 </LinearLayout>

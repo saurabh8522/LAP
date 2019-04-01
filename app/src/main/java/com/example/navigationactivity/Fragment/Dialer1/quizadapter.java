@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.navigationactivity.Fragment.listToRate;
 import com.example.navigationactivity.R;
 
 import java.util.List;
@@ -62,12 +63,17 @@ public class quizadapter extends BaseAdapter {
         final com.example.navigationactivity.Fragment.Dialer1.quizItems item = quizItems.get(position);
         quiz_name.setText(item.getName());
         user_rating.setText(item.getRating());
+
         //quiz_name.setText("abc");
         //quiz_image.setImageUrl(item.getQuiz_image(),imageLoader);
         linearLayout_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent()
+         final Intent intent   = new Intent(context, listToRate.class);
+                intent.putExtra("username",item.getName());
+                intent.putExtra("rating",item.getRating());
+                context.startActivity(intent);
+
             }
         });
         return convertView;

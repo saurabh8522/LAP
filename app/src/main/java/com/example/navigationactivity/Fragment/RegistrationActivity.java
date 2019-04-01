@@ -13,6 +13,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.example.navigationactivity.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +28,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
@@ -130,6 +139,7 @@ public class RegistrationActivity extends AppCompatActivity{
                                 //  progressDialog.show();
                                 //sendEmailVerification();
                                 sendUserData();
+                                addstudent();
                                 //firebaseAuth.signOut();
                                 Toast.makeText(getApplicationContext(), "Successfully Registered, Upload complete!", Toast.LENGTH_SHORT).show();
                                 // finish();
@@ -231,4 +241,66 @@ public class RegistrationActivity extends AppCompatActivity{
 
         // progressDialog.dismiss();
     }
+    public void addstudent(){
+        final String string_name = userName.getText().toString().trim();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_Normal_Signup_Student,
+                new com.android.volley.Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String ServerResponse) {
+                        //  SharedPrefsMethods.saveprofiledata("Logined",email,mobile,spinner,name);
+
+
+                        Toast.makeText(RegistrationActivity.this, ServerResponse, Toast.LENGTH_LONG).show();
+
+                        // Hiding the progress dialog after all task complete.
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+
+                        // Hiding the progress dialog after all task complete.
+
+
+                        // Showing error message if something goes wrong.
+                        Toast.makeText(RegistrationActivity.this, volleyError.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+
+                // Creating Map String Params.
+                Map<String, String> params = new HashMap<String, String>();
+
+                // Adding All values to Params.
+                // The first argument should be same sa your MySQL database table columns.
+                String rating= "0";
+                String wallet= "0";
+                params.put(Config.name,string_name );
+                params.put("rating",rating);
+                params.put(Config.wallet,wallet);
+                //  params.put("User_Password", PasswordHolder);
+
+                return params;
+            }
+
+        };
+
+        // Creating RequestQueue.
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        // Adding the StringRequest object into requestQueue.
+        requestQueue.add(stringRequest);
+
+
+    }
+
+
+
+
+
+
 }

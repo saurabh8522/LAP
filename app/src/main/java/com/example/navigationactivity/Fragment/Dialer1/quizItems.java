@@ -1,4 +1,4 @@
-package com.example.navigationactivity.Fragment.Dialer;
+package com.example.navigationactivity.Fragment.Dialer1;
 
 public class quizItems {
     private String name,rating;

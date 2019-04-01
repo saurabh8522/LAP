@@ -16,6 +16,15 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.navigationactivity.Fragment.Dialer1.AppController;
+import com.example.navigationactivity.Fragment.Dialer1.quizItems;
 import com.example.navigationactivity.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,22 +35,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.content.ContentValues.TAG;
+
 public class Rate2 extends AppCompatActivity {
-    FirebaseDatabase database;
-    DatabaseReference ref;
-    RateAdapter adapter;
+
 
     EditText rate_review;
     public RatingBar ratingbar_default;
     private TextView ratingValue_default;
-    String name,age,phone,addr,email,gen,ratedVal,ratedValue,uname;
-    String rate,userNamesent;
-    User user;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    String ratedValue,rate;
     private Button btnSubmitRate;
     Fragment fragment = new Fragment();
+    String username,userRating;
     public Rate2() {
         // Required empty public constructor
     }
@@ -50,25 +62,15 @@ public class Rate2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate2);
-
-
-        user = new User();
-        database = FirebaseDatabase.getInstance();
-        ref = database.getReference("profiles/");
-        //adapter = new RateAdapter(this, list);
-
         rate_review = (EditText) findViewById(R.id.rate_review);
         btnSubmitRate = findViewById(R.id.btnSubmitRate);
         ratingbar_default = (RatingBar) findViewById(R.id.ratingbar_default);
         ratingValue_default = (TextView)findViewById(R.id.ratingbar_default_number);
-        FirebaseApp.initializeApp(this);
-        FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-
-
         Intent intent = getIntent();
-        userNamesent = intent.getStringExtra("KEY_USER_NAME");
+        username = intent.getStringExtra("username11");
+        Toast.makeText(getApplicationContext(),username+"  -- ajdbf", Toast.LENGTH_LONG).show();
+
+
 
         ratingbar_default
                 .setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -88,120 +90,85 @@ public class Rate2 extends AppCompatActivity {
                     }
                 });
 
-//        ref.addValueEventListener(new ValueEventListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.N)
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
-//                {
-//                    //user = ds.getValue(User.class);
-//                    UserProfile userProfile = dataSnapshot1.getValue(UserProfile.class);
-//
-//                    if(userProfile.getUserName().equals("REclone"))
-//                    {
-//                        name = userProfile.getUserName();
-//                        age=userProfile.getUserAge();
-//                        addr=userProfile.getUserAddr();
-//                        email=userProfile.getUserEmail();
-//                        phone= userProfile.getUserPhone();
-//                        gen=userProfile.getUserGen();
-//                        rate = rate_review.getText().toString();
-//
-//
-//                        userProfile = new UserProfile(phone,email,name,addr,gen,age,rate,ratedValue);
-//                        //databaseReference.child(firebaseAuth.getUid()).setValue(userProfile1);
-//                        ref.child(firebaseAuth.getUid()).setValue(userProfile);
-//
-//                    }
-//                    //user = ds.getValue(User.class);
-//
-//
-//                }
-//
-//                //String name = dataSnapshot.getValue().toString();
-//                //  Toast.makeText(dialerpge.this,""+list.size(),Toast.LENGTH_SHORT ).show();
-//                ref.removeEventListener(this);
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
 
         btnSubmitRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                if(firebaseAuth.getUid()==null) {
-                    Intent i = new Intent(Rate2.this, LoginActivity.class);
-                    startActivity(i);
-                    ((Activity) Rate2.this).overridePendingTransition(0, 0);
-                }
-                else {
-                    //String userID=FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    databaseReference = firebaseDatabase.getReference("profiles");
-                    databaseReference.child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-
-                            for(DataSnapshot ds:dataSnapshot.getChildren())
-                            {
-
-
-                                UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
-                                if(userProfile.getUserName().equals(userNamesent))
-                                {
-                                    //userProfile.setRatings(ratedValue);
-                                    name = userProfile.getUserName();
-                                    age=userProfile.getUserAge();
-                                    addr=userProfile.getUserAddr();
-                                    email=userProfile.getUserEmail();
-                                    phone= userProfile.getUserPhone();
-                                    gen=userProfile.getUserGen();
-                                }
-
-                                Log.d("ADebugTag", "Value: " + userNamesent);
-
-
-
-
-                                //list.add(user);
-
-
-
-                            }
-
-
                             rate = rate_review.getText().toString();
-                            UserProfile userProfile1 = new UserProfile(phone,email,name,addr,gen,age);
+                Toast.makeText(getApplicationContext(),ratedValue+ "is rate given by the user", Toast.LENGTH_LONG).show();
+                          //  Toast.makeText(Rate2.this,"Thank you for rating!", Toast.LENGTH_SHORT).show();
 
-
-                           // databaseReference.child(firebaseAuth.getUid()).setValue(userProfile1);
-                            Toast.makeText(Rate2.this,"Thank you for rating!", Toast.LENGTH_SHORT).show();
+                            submitRating(rate);
 
                             startActivity(new Intent(Rate2.this, MainActivity.class));
 
 
                         }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Toast.makeText(Rate2.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-
-                }
-
-
-            }
         });
 
 
     }
+    public void submitRating(String rate) {
+
+        final String srate = rate;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Config.URL_Normal_Rating_Student,
+                new com.android.volley.Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String ServerResponse) {
+                        //  SharedPrefsMethods.saveprofiledata("Logined",email,mobile,spinner,name);
+
+
+                        Toast.makeText(getApplicationContext(), ServerResponse, Toast.LENGTH_LONG).show();
+
+                        // Hiding the progress dialog after all task complete.
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+
+                        // Hiding the progress dialog after all task complete.
+
+
+                        // Showing error message if something goes wrong.
+                        Toast.makeText(getApplicationContext(), volleyError.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+
+                // Creating Map String Params.
+                Map<String, String> params = new HashMap<String, String>();
+
+                // Adding All values to Params.
+                // The first argument should be same sa your MySQL database table columns.
+
+                params.put("username",username);
+                params.put("rating",ratedValue);
+                //params.put(Config.wallet,wallet);
+                //  params.put("User_Password", PasswordHolder);
+
+                return params;
+            }
+
+        };
+
+        // Creating RequestQueue.
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        // Adding the StringRequest object into requestQueue.
+        requestQueue.add(stringRequest);
+
+
+    }
+
+
+
+
 }
