@@ -42,7 +42,8 @@ public class student_quiz_list extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_quiz_list);
+        //setContentView(R.layout.activity_student_quiz_list);
+        setContentView(R.layout.activity_dialerpge);
         listView_quiz = (ListView)findViewById(R.id.quiz_list);
         quizItems = new ArrayList<quizItems>();
         quizadapter = new quizadapter(student_quiz_list.this,quizItems,this);
